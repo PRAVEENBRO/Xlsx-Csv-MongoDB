@@ -1,0 +1,35 @@
+<div class=" card  mt-5 p-5 container " style="width:35rem">
+
+    <h1 style="font-family:cursive ;">Edit User</h1>
+
+    <form action="/edit-product" method="POST">
+
+        <div class="mb-3">
+            <label class="form-label" style="font-family:cursive ;">user name</label>
+            <input type="number" class="form-control" placeholder="user name" id="firstname" name="firstname"
+                value="{{editUser.firstname}}">
+        </div>
+
+        <div class="mb-3">
+            <label class="form-label" style="font-family:cursive ;">Policy category</label>
+            <input type="text" class="form-control" placeholder="Policy category" id="category_name"
+                name="category_name" value="{{editUser.category_name}}">
+        </div>
+
+        <div class="mb-3">
+            <label class="form-label" style="font-family:cursive ;">premium amount</label>
+            <input type="number" class="form-control" placeholder="premium amount" id="premium_amount"
+                name="premium_amount" value="{{editUser.premium_amount}}">
+        </div>
+
+        <div class="mb-3">
+            <label class="form-label" style="font-family:cursive ;">address</label>
+            <input type="text" class="form-control" placeholder="address" id="address" name="address"
+                value="{{editUser.address}}">
+        </div>
+
+        <button type="submit" class="btn btn-outline-dark">Submit</button>
+    </form>
+
+
+</div>

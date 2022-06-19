@@ -1,0 +1,40 @@
+<div class="container mt-5">
+
+    <h1 style="font-family:cursive ;"> Xlsx Records</h1>
+
+    <table class="table table-dark table-striped">
+        <thead>
+            <tr>
+                <th scope="col">agent</th>
+                <th scope="col">User</th>
+                <th scope="col">Policy category</th>
+                <th scope="col">Policy ID</th>
+                <th scope="col">premium amount</th>
+                <th scope="col">address</th>
+                <th scope="col">EDIT PRODUCT</th>
+                <th scope="col">DELETE PRODUCT</th>
+            </tr>
+        </thead>
+        <tbody>
+            {{#each alldata}}
+            <tr>
+                <th> {{agent}} </th>
+                <th> {{firstname}} </th>
+                <th> {{category_name}} </th>
+                <th> {{policy_number}} </th>
+                <th> {{premium_amount}} /- </th>
+                <th> {{address}} </th>
+
+                <td>
+                    <form action="/edit-User/{{_id}}" method="GET"> <button type="submit "
+                            class="btn btn-primary">EDIT</button> </form>
+                </td>
+                <td>
+                    <form action="/delete-User/{{_id}}" method="GET"> <button type="submit "
+                            class="btn btn-danger">DELETE</button> </form>
+                </td>
+            </tr>
+            {{/each }}
+        </tbody>
+    </table>
+</div>
