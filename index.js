@@ -1,7 +1,5 @@
 const express = require('express');
 const exphbs = require('express-handlebars');
-const handlebars = require('handlebars')
-// const { allowInsecurePrototypeAccess } = require('@handlebars/allow-prototype-access')
 
 const port = process.env.PORT || 4000;
 const app = express();
@@ -14,7 +12,6 @@ require("./config/dbConnection");
 const DataSchema = require("./model/dataSchema")
 // ==============================================================//
 
-// app.engine('handlebars', exphbs());
 app.engine('handlebars', exphbs({
     runtimeOptions: {
         allowProtoPropertiesByDefault: true,
