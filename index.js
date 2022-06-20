@@ -3,7 +3,7 @@ const exphbs = require('express-handlebars');
 const handlebars = require('handlebars')
 // const { allowInsecurePrototypeAccess } = require('@handlebars/allow-prototype-access')
 
-const port = 4000;
+const port = process.env.PORT || 4000;
 const app = express();
 const Routes = require('./routes/records.js');
 const multer = require('multer');
