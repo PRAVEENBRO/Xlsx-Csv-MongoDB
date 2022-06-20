@@ -2,30 +2,36 @@
 
     <h1 style="font-family:cursive ;">Edit User</h1>
 
-    <form action="/edit-product" method="POST">
+    <form action="/edit-User/{{id}}" method="POST">
 
         <div class="mb-3">
-            <label class="form-label" style="font-family:cursive ;">user name</label>
-            <input type="number" class="form-control" placeholder="user name" id="firstname" name="firstname"
-                value="{{editUser.firstname}}">
+            <label class="form-label" style="font-family:cursive ;">Policy number</label>
+            <input type="text" class="form-control" placeholder="policy number" id="policy number" name="policy_number"
+                disabled="true" value="{{policy_number}}">
+        </div>
+
+        <div class="mb-3">
+            <label class="form-label" style="font-family:cursive ;">User name</label>
+            <input type="text" class="form-control" placeholder="user name" id="firstname" name="firstname"
+                value="{{firstname}}">
         </div>
 
         <div class="mb-3">
             <label class="form-label" style="font-family:cursive ;">Policy category</label>
             <input type="text" class="form-control" placeholder="Policy category" id="category_name"
-                name="category_name" value="{{editUser.category_name}}">
+                name="category_name" value="{{category_name}}">
         </div>
 
         <div class="mb-3">
-            <label class="form-label" style="font-family:cursive ;">premium amount</label>
-            <input type="number" class="form-control" placeholder="premium amount" id="premium_amount"
-                name="premium_amount" value="{{editUser.premium_amount}}">
+            <label class="form-label" style="font-family:cursive ;">Premium amount</label>
+            <input type="text" class="form-control" placeholder="premium amount" id="premium_amount"
+                name="premium_amount" value="{{premium_amount}}">
         </div>
 
         <div class="mb-3">
-            <label class="form-label" style="font-family:cursive ;">address</label>
+            <label class="form-label" style="font-family:cursive ;">User address</label>
             <input type="text" class="form-control" placeholder="address" id="address" name="address"
-                value="{{editUser.address}}">
+                value="{{address}}">
         </div>
 
         <button type="submit" class="btn btn-outline-dark">Submit</button>

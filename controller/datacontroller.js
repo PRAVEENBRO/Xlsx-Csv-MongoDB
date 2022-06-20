@@ -1,22 +1,62 @@
 const dataSchema = require("../model/dataSchema");
 
-const upload = (req, res, next) => {
-    console.log(req.file)
-    res.json({ data: req.file });
+
+const upload_file = (req, res) => {
+    res.render('./upload-file.handlebars');
 }
 
+const landingpage = (req, res) => {
+    res.render('./landingpage.handlebars');
+}
 
-const deleteuser = async (req, res) => {
-    // console.log(req.params._id);
-    _id = req.params._id
-    const resp = await dataSchema.deleteOne({ _id });
-    console.log(resp);
-    if (resp.deletedCount) {
-        res.redirect('/filedata');
+const filedata = async (req, res, next) => {
+    try {
+        alldata = await dataSchema.find({});
+        res.render('./filedata.handlebars', { alldata });
+    } catch (err) { next(); }
+}
+
+const get_edit_user = async (req, res, next) => {
+    const id = req.params._id;
+    try {
+        const editUser = await dataSchema.findOne({ _id: id });
+        const { _id, firstname, category_name, policy_number, premium_amount, address } = editUser
+        res.render('./edit-product.handlebars', { id, firstname, category_name, policy_number, premium_amount, address });
+    } catch (err) { next(err) }
+
+}
+
+const post_edit_user = async (req, res, next) => {
+    const _id = req.params._id
+    try {
+        let { firstname, category_name, premium_amount, address } = req.body;
+        const response = await dataSchema.updateOne({ _id }, { $set: { firstname, category_name, premium_amount, address } });
+    } catch (err) {
+        next(err)
     }
+    res.redirect('/filedata')
+}
 
+const delete_user = async (req, res, next) => {
+    try {
+        const resp = await dataSchema.deleteOne({ _id: req.params._id });
+        if (resp.deletedCount) {
+            res.redirect('/filedata');
+        }
+    } catch (err) { next(err) }
+}
+
+const delete_alluser = async (req, res) => {
+    await dataSchema.deleteMany();
+    res.redirect("/")
 }
 
 module.exports = {
-    upload, deleteuser
+    upload_file,
+    landingpage,
+    filedata,
+    get_edit_user,
+    post_edit_user,
+    delete_user,
+    delete_alluser
 }

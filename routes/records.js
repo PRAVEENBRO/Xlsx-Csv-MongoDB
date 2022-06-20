@@ -5,49 +5,20 @@ const controller = require('../controller/datacontroller.js')
 
 
 
-router.get('/', (req, res) => {
-    res.render('./landingpage.handlebars');
-});
+router.get('/', controller.landingpage);
 
-router.get('/upload', (req, res) => {
-    res.render('./upload-file.handlebars');
-});
+// =================== CREAT-USERS =================== //  
+router.get('/upload', controller.upload_file);
 
-router.get('/filedata', async (req, res) => {
-    alldata = await dataSchema.find({});
-    res.render('./filedata.handlebars', { alldata });
-});
+// =================== READ-USERS =================== //  
+router.get('/filedata', controller.filedata);
 
+// =================== EDIT-USERS =================== //  
+router.get('/edit-User/:_id', controller.get_edit_user);
+router.post('/edit-User/:_id', controller.post_edit_user);
 
-// =================== EDIT-PRDUUCT =================== //  
-
-
-router.get('/edit-User/:_id', async (req, res) => {
-    _id = req.params._id;
-    console.log(_id);
-    const editUser = await dataSchema.findOne({ _id });
-    console.log("----", editUser);
-
-    const { agent, firstname, category_name, policy_number } = editUser
-
-    res.render('./edit-product.handlebars', { agent, firstname, category_name, policy_number });
-})
-
-router.post('/edit-product', (req, res) => {
-    console.log(req.body);
-    let { _id, pname, pdesc, pprize } = req.body;
-    _id = parseInt(_id);
-    pprize = parseInt(pprize);
-
-    const index = products.findIndex((product) => {
-        return parseInt(product._id) === parseInt(_id);
-    });
-    products.splice(index, 1, { _id, pname, pdesc, pprize });
-    res.redirect('/products/products')
-})
-
-// =================== DELETE-PRDUUCT =================== //  
-
-router.get('/delete-User/:_id', controller.deleteuser)
+// =================== DELETE-USERS =================== //  
+router.get('/delete-User/:_id', controller.delete_user);
+router.post('/delete-alldata', controller.delete_alluser);
 
 module.exports = router

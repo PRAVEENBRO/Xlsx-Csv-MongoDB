@@ -2,10 +2,13 @@
 
     <h1 style="font-family:cursive ;"> Xlsx Records</h1>
 
-    <table class="table table-dark table-striped">
+    <form action="/delete-alldata" method="POST"> <button type="submit " class="btn btn-outline-danger my-5">DELETE All
+            DATA</button>
+    </form>
+
+    <table class="table table-light table-striped">
         <thead>
             <tr>
-                <th scope="col">agent</th>
                 <th scope="col">User</th>
                 <th scope="col">Policy category</th>
                 <th scope="col">Policy ID</th>
@@ -18,13 +21,11 @@
         <tbody>
             {{#each alldata}}
             <tr>
-                <th> {{agent}} </th>
-                <th> {{firstname}} </th>
-                <th> {{category_name}} </th>
-                <th> {{policy_number}} </th>
-                <th> {{premium_amount}} /- </th>
-                <th> {{address}} </th>
-
+                <td> {{firstname}} </td>
+                <td> {{category_name}} </td>
+                <td> {{policy_number}} </td>
+                <td> {{premium_amount}} /- </td>
+                <td> {{address}} </td>
                 <td>
                     <form action="/edit-User/{{_id}}" method="GET"> <button type="submit "
                             class="btn btn-primary">EDIT</button> </form>

@@ -63,5 +63,5 @@ app.post('/filedata', upload.single("csv"), async (req, res) => {
 
 
 app.listen(port, () => {
-    console.log(`http://localhost:${port}`);
+    console.log(`crt + click => http://localhost:${port}`);
 });
